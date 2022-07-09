@@ -1,4 +1,4 @@
-# fakemusic
+# yyPlayer
 
 ## Project setup
 ```
