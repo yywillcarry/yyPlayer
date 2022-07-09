@@ -1,27 +1,69 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    redirect: '/music'
+}, {
+    path: '/music',
+    component: () =>
+        import ('pages/music'),
+    redirect: '/music/playlist',
+    children: [{
+            path: '/music/playlist',
+            component: () =>
+                import ('pages/playList'),
+            meta: {
+                keepAlive: true
+            }
+        }, {
+            path: '/music/userlist',
+            component: () =>
+                import ('pages/userList'),
+            meta: {
+                keepAlive: true
+            }
+        },
+        {
+            path: '/music/toplist',
+            component: () =>
+                import ('pages/topList'),
+            meta: {
+                keepAlive: true
+            }
+        }, {
+            path: '/music/details/:id',
+            component: () =>
+                import ('pages/details'),
+
+        }, {
+            path: '/music/historylist',
+            component: () =>
+                import ('pages/historyList'),
+
+        },
+
+        {
+            path: '/music/search',
+            component: () =>
+                import ('pages/search'),
+            meta: {
+                keepAlive: true
+            }
+        },
+        {
+            path: '/music/comment/:id',
+            component: () =>
+                import ('pages/comment'),
+        }
+    ]
+}]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router

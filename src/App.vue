@@ -1,32 +1,50 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <headers></headers>
+    <router-view />
+    <audio ref="yyPlayer" ></audio>
   </div>
 </template>
+<script>
+import headers from "components/headers";
+import { getPlayListDetail  } from "api/index.js";
+import { mapActions } from "vuex";
+export default {
+  name: "App",
+  components: {
+    headers,
+  },
+  created() {
+    // 24381616
+    // 3778678
 
-<style>
+    getPlayListDetail(3778678).then((result) => {
+
+      this.$store.dispatch("setPlayList",result.tracks);
+    });
+    this.$nextTick(() => {
+      this.setAudio(this.$refs.yyPlayer);
+    });
+  },
+  methods: {
+    ...mapActions(["setAudio"]),
+  },
+};
+</script>
+<style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: @text_color;
+  font-size: @font_size_medium;
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  .router-view {
+    width: 100%;
+    height: 100%;
+  }
+  audio {
+    position: fixed;
+  }
 }
 </style>
