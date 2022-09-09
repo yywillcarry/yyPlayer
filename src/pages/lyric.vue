@@ -13,7 +13,7 @@
       <template v-else>
         <dd>yyPlayer在线音乐播放器</dd>
         <dd>
-          <a class="hover" target="_blank" href="https://github.com/maomao1996">
+          <a class="hover" target="_blank" href="https://github.com/yywillcarry">
             <yy-icon type="github" :size="14" />&nbsp;阳阳
           </a>
         </dd>
