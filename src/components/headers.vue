@@ -62,7 +62,7 @@
         <li>4、复制浏览器地址栏 /user/home?id= 后面的数字（网易云 UID）</li>
       </ul>
     </dialogs> -->
-        <dialogs
+    <dialogs
       head-text="登录帮助"
       confirm-btn-text="去登录"
       cancel-btn-text="关闭"
@@ -70,9 +70,7 @@
       @confirm="openDialog(0)"
     >
       <ul slot="text">
-        <li>
-          1、打开网易云音乐app
-        </li>
+        <li>1、打开网易云音乐app</li>
         <li>2、找到扫一扫</li>
         <li>3、点击授权登录</li>
       </ul>
@@ -150,9 +148,9 @@ export default {
       timer = null;
     },
     showQRCode() {
-      QRCode.toCanvas(canvas, this.url, {
-        width: 100,
-        height: 100,
+      QRCode.toCanvas(this.$refs.canvas, this.url, {
+        width: 128,
+        height: 128,
       });
 
       timer = setInterval(() => {

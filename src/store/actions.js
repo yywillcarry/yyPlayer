@@ -11,7 +11,7 @@ export default {
     setCurrentIndex({ commit }, index) {
         commit('SETCURRENTINDEX', index)
     },
-    removePlayListItem({ commit, state, getters }, { list, index }) {
+    removePlayListItem({ commit, getters }, { list, index }) {
         let currentIndex = getters.currentIndex
         if (index < getters.currentIndex) {
             commit('SETCURRENTINDEX', --currentIndex)

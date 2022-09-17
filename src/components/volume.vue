@@ -36,7 +36,6 @@ export default {
           return this.volume == 0;
       },
       set(newMute){
-        console.log(newMute);
         const volume=newMute?0:this.lastVolume
         if(newMute){
           this.lastVolume=this.volume

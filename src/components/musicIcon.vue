@@ -1,27 +1,27 @@
 <!-- icon 组件 -->
 <script>
 export default {
-  name: 'YyIcon',
+  name: "YyIcon",
   props: {
     type: {
       type: String,
-      required: true
+      required: true,
     },
     size: {
       type: Number,
-      default: 16
-    }
+      default: 16,
+    },
   },
   methods: {
     getIconCls() {
-      return `icon-${this.type}`
+      return `icon-${this.type}`;
     },
     getIconStyle() {
-      return { fontSize: this.size + 'px' }
+      return { fontSize: this.size + "px" };
     },
     onClick(e) {
-      this.$emit('click', e)
-    }
+      this.$emit("click", e);
+    },
   },
   render() {
     const Icon = (
@@ -30,10 +30,10 @@ export default {
         class={`iconfont ${this.getIconCls()}`}
         style={this.getIconStyle()}
       />
-    )
-    return Icon
-  }
-}
+    );
+    return Icon;
+  },
+};
 </script>
 
 <style lang="less">
